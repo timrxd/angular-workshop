@@ -15,7 +15,6 @@ export class DeckComponent implements OnInit {
 
   ngOnInit() {
     this.resetDeck();
-    this.shuffleDeck();
   }
 
   resetDeck() {
@@ -30,9 +29,15 @@ export class DeckComponent implements OnInit {
         this.deck.push("" + values[x] + suits[y]);
       }
     }
+    this.shuffleDeck();
   }
 
   shuffleDeck() {
+    //this.resetDeck();
+    //this.drawn.clear();
+    while (this.drawn.length > 0) {
+      this.deck.push(this.drawn.pop());
+    }
     for (var x = 0; x < 52; x++) {
       this.swapCards(x,Math.floor(Math.random() * 52));
     }
@@ -43,6 +48,12 @@ export class DeckComponent implements OnInit {
     var temp = this.deck[x];
     this.deck[x] = this.deck[y];
     this.deck[y] = temp;
+  }
+
+  drawCard() {
+    if (this.deck.length > 0) {
+      this.drawn.push(this.deck.pop());
+    }
   }
 
 }
