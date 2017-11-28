@@ -1,3 +1,26 @@
-<p>
-  Drawn
-</p>
+<div align="center">
+  <button (click)="drawCard()">Draw</button>
+  <button (click)="shuffleDeck()">Shuffle</button>
+</div>
+
+<div class="main-container">
+  <div class="sub-container">
+    <div class="row">
+
+      <div class="column">
+        <h3> Deck: </h3>
+        <p class="card" *ngFor="let card of deck">
+          {{ card }}
+        </p>
+      </div>
+
+      <div class="column">
+        <h3> Drawn: </h3>
+        <p class="card" *ngFor="let card of drawn">
+          {{ card }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
